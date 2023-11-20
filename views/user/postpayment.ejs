@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>The Plaza</title>
+  <link rel="shortcut icon" href="/img/logo.png">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <script src="/font/fontawesome/js/all.min.js"></script>
+</head>
+
+<body>
+  <% const currentTab="payments" ; %>
+  <%- include('./partials/header.ejs', { currentTab: currentTab }) %>
+  <%- include('./partials/msg-err.ejs') %>
+
+  <!-- CODE HERE -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2 mt-3 mb-4">
+        <div class="progress">
+          <div class="progress-bar bg-warning" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <form class="needs-validation mt-5 mb-5" novalidate action="/postservice/<%= service_id %>/" method="post">
+      <input type="hidden" name="service_id" value="<%= service_id %>">
+
+      <div class="col-lg-6 mx-auto">
+        <label for="room_number" class="form-label">Enter your room number:</label>
+        <input type="text" class="form-control" id="room_number" name="room_number" required>
+        <div class="invalid-feedback">
+          Please enter a valid end date.
+        </div>
+      </div>
+
+
+      <div class="mb-3 text-center mt-4">
+        <button class="btn btn-primary" type="submit">Book the service now</button>
+      </div>
+    </form>
+  </div>
+  </div>
+
+  <!-- ......... -->
+  <%- include('./partials/footer.ejs') -%>
+  <script src="/js/bootstrap.js"></script>
+</body>
+
+</html>

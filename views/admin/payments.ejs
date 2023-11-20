@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Manager The Plaza</title>
+  <link rel="shortcut icon" href="/img/logo.png">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <script src="/font/fontawesome/js/all.min.js"></script>
+</head>
+
+<body>
+  <% const currentTab="admin/payments" ; %>
+  <%- include('./partials/header.ejs', { currentTab: currentTab }) %>
+  <%- include('./partials/msg-err.ejs') %>
+
+  <!-- CODE HERE -->
+  <div class="container my-5">
+    <h1>Order Management</h1>
+    <% if (payments.length === 0) { %>
+    <p>No orders found!</p>
+    <% } else { %>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Customer name</th>
+          <th>Service name</th>
+          <th>Service type</th>
+          <th>Room number</th>
+          <th>Order date</th>
+          <th>Price</th>
+          <th>Status</th>
+          <th>Operation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% payments.forEach(function(payment) { %>
+        <tr>
+          <td><%= payment.payment_id %></td>
+          <td><%= payment.user_id %></td>
+          <td><%= payment.service_name %></td>
+          <td><%= payment.service_type %></td>
+          <td><%= payment.room_number %></td>
+          <td><%= payment.payment_date.toLocaleString() %></td>
+          <td><%= payment.price %></td>
+          <td>
+            <% if (payment.accepted === 1) { %>
+            Accepted!
+            <% } else if (payment.accepted === 2) { %>
+              Refused!
+            <% } else { %>
+            Unconfimred
+            <% } %>
+          </td>
+          <td>
+            <% if (payment.accepted === 0) { %>
+            <form method="POST" action="/admin/payments/<%= payment.payment_id %>">
+              <button type="submit" name="accepted" value="1" class="btn btn-success">Accept</button>
+              <button type="submit" name="accepted" value="2" class="btn btn-danger">Refuse</button>
+            </form>
+            <% } %>
+          </td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+    <% } %>
+  </div>
+  <!-- ......... -->
+  <%- include('./partials/footer.ejs') -%>
+  <script src="/js/bootstrap.js"></script>
+</body>
+
+</html>

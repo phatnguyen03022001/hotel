@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Manager The Plaza</title>
+  <link rel="shortcut icon" href="/img/logo.png">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <script src="/font/fontawesome/js/all.min.js"></script>
+</head>
+
+<body style="min-height: 100vh">
+  <% const currentTab = "admin/login"; %>
+  <%- include('./partials/header.ejs', { currentTab: currentTab }) %>
+  <%- include('./partials/msg-err.ejs') %>
+
+  <!-- CODE HERE -->
+  <div class="container-fluid">
+    <h1 class="text-center mt-5">LOGIN AS ADMIN</h1>
+    <form class="needs-validation mt-5 mb-5" novalidate action="/admin/login" method="post">
+      <div class="col-lg-6 mx-auto">
+        <label for="username" class="form-label">Username:</label>
+        <input type="text" class="form-control" id="username" name="username" required>
+        <div class="invalid-feedback">
+          Please enter a valid username.
+        </div>
+      </div>
+      <div class="col-lg-6 mx-auto">
+        <label for="password" class="form-label">Password:</label>
+        <input type="password" class="form-control" id="password" name="password" required>
+        <div class="invalid-feedback">
+          Please enter a valid password.
+        </div>
+      </div>
+      <div class="mb-3 text-center mt-4">
+        <button class="btn btn-primary" type="submit">Login</button>
+      </div>
+    </form>
+
+    <div class="pb-5"></div>
+    <div class="pb-5"></div>
+    <div class="pb-5"></div>
+    <div class="pb-5"></div>
+    <div class="pb-5"></div>
+  </div>
+  <!-------000-------->
+
+  <!-------000-------->
+  <%- include('./partials/footer.ejs') -%>
+  <script src="/js/bootstrap.js"></script>
+</body>
+
+</html> 

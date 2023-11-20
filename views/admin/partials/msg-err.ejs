@@ -1,0 +1,27 @@
+  <!-- OPEN MSG & ERR  -->
+  <% if (msg) { %>
+    <div class="container msg-err col-lg-4 text-light bg-success p-4 mt-4 d-inline-block text-center" style="position: absolute; top: 15%; left: 50%; transform: translate(-50%, -50%); border-radius: 4px;">
+      <h3>
+      <%= msg %>
+    </h3>
+  </div>
+  <script>
+    setTimeout(function() {
+      document.querySelector('div.container.msg-err').remove();
+    }, 1500);
+  </script>
+  <% } %>
+
+  <% if (err) { %>
+  <div class="container msg-err col-lg-4 text-light bg-danger p-4 mt-4 d-inline-block text-center" style="position: absolute; top: 15%; left: 50%; transform: translate(-50%, -50%); border-radius: 4px;">
+    <h3>
+      <%= err %>
+    </h3>
+  </div>
+  <script>
+    setTimeout(function() {
+      document.querySelector('div.container.msg-err').remove();
+    }, 5000);
+  </script>
+  <% } %>
+  <!-- CLOSE MSG & ERR  -->

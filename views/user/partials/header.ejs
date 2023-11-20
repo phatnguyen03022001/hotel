@@ -1,0 +1,68 @@
+<header style="position: relative, sticky;" class="sticky-top">
+  <nav class="navbar navbar-expand-lg navbar-light navbar-custom bg-dark text-light">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold text-danger font-italic" href="/">The Plaza</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"><i class="fas fa-bars" style="color:#fff; font-size:28px;"></i></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item mx-2">
+            <a class="nav-link <% if(currentTab === 'overview') { %>active<% } %>" href="/overview">Overview</a>
+          </li>
+          
+          <li class="nav-item mx-2">
+            <a class="nav-link <% if(currentTab === 'rooms') { %>active<% } %>" href="/rooms">Rooms</a>
+          </li>
+          
+          <li class="nav-item mx-2">
+            <a class="nav-link <% if(currentTab === 'foods') { %>active<% } %>" href="/foods">Foods</a>
+          </li>
+          
+          <li class="nav-item mx-2">
+            <a class="nav-link <% if(currentTab === 'shuttles') { %>active<% } %>" href="/shuttles">Shuttles</a>
+          </li>
+
+          <li class="nav-item mx-2">
+            <a class="nav-link <% if(currentTab === 'payments') { %>active<% } %>" href="/payments">Payments</a>
+          </li>
+
+          <li class="nav-item mx-2 px-2">
+            <a class="nav-link <% if(currentTab === 'cart') { %>active<% } %>" href="/cart">
+              <span class=""><i class="fa-solid fa-cart-shopping"></i></span>
+            </a>
+          </li>
+          <li class="nav-item mx-2">
+            <a class="nav-link <% if(currentTab === 'history') { %>active<% } %>" href="/history">
+              <span class=""><i class="fa-solid fa-clock-rotate-left"></i></span>
+            </a>
+          </li>
+        </ul>
+        
+        <!-- login -->
+        <ul class="nav ms-auto">
+          
+
+          <% if (locals.user===undefined) { %>
+          <li class="nav-item mx-2">
+            <a class="nav-link <% if(currentTab === 'login') { %>active<% } %>" href="/login">Login</a>
+          </li>
+          <% } else { %>
+            <li class="nav-item">
+              <a class="nav-link <% if(currentTab === 'settings') { %>active<% } %>" href="/settings">
+                <span class=""><i class="fa-solid fa-gear"></i></span>
+              </a>
+            </li>
+            
+          <li class="nav-item mx-2">
+            <form action="/logout" method="POST">
+              <button type="submit" class="nav-link btn text-light">Logout</button>
+            </form>
+          </li>
+          <% } %>
+        </ul>
+        <!-- login -->
+      </div>
+    </div>
+  </nav>
+</header>

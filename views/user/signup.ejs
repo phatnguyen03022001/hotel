@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>The Plaza</title>
+  <link rel="shortcut icon" href="/img/logo.png">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <script src="/font/fontawesome/js/all.min.js"></script>
+</head>
+
+<body>
+  <% const currentTab = "signup"; %>
+  <%- include('./partials/header.ejs', { currentTab: currentTab }) %>
+  <%- include('./partials/msg-err.ejs') %>
+
+  <!-- CODE HERE -->
+  <div class="container">
+    <h1 class="text-center mt-5">Sign up for an account</h1>
+    <br>
+    <form class="mt-5 mb-5" action="/signup" method="post">
+      <div class="row">
+        <div class="col-lg-6 mx-auto">
+          <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                  Login information
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="username" name="username" placeholder=" " required>
+                    <label for="username">Account</label>
+                    <div class="invalid-feedback">
+                      Please enter a valid account name
+                    </div>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="password" name="password" placeholder=" " required>
+                    <label for="password">Password</label>
+                    <div class="invalid-feedback">
+                      Please enter a valid password
+                    </div>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder=" " required>
+                    <label for="confirm_password">Confirm password</label>
+                    <div class="invalid-feedback">
+                      Please re-enter your password
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  Personal information
+                </button>
+              </h2>
+              <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="fullname" name="fullname" placeholder=" " required>
+                    <label for="fullname">First name and last name</label>
+                    <div class="invalid-feedback">
+                      Please enter a valid first and last name
+                    </div>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="email" name="email" placeholder=" " required>
+                    <label for="email">Email</label>
+                    <div class="invalid-feedback">
+                      Please enter a valid email address
+                    </div>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="tel" class="form-control" id="phone" name="phone" placeholder=" " required>
+                    <label for="phone">Phone number</label>
+                    <div class="invalid-feedback">
+                      Please enter a valid phone number
+                    </div>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="address" name="address" placeholder=" " required>
+                    <label for="address">Address</label>
+                    <div class="invalid-feedback">
+                      Please enter a valid address
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br>
+          <button class="btn btn-primary mt-4 d-block mx-auto" type="submit">Register</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <!-- ......... -->
+  <%- include('./partials/footer.ejs') -%>
+  <script src="/js/bootstrap.js"></script>
+</body>
+
+</html>

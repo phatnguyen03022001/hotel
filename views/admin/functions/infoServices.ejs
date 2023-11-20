@@ -1,0 +1,52 @@
+<div class="container">
+  <h1 class="text-center mt-5">Enter service information</h1>
+  <form class="needs-validation mt-5 mb-5" novalidate action="/admin/services" method="post" enctype="multipart/form-data">
+    
+    <div class="col-lg-6 mx-auto">
+      <label for="service_name" class="form-label">Service Name:</label>
+      <input type="text" class="form-control" id="service_name" name="service_name" required>
+      <div class="invalid-feedback">
+        Please enter a valid room number.
+      </div>
+    </div>
+
+    <div class="col-lg-6 mx-auto">
+      <label for="service_type" class="form-label">Occupancy:</label>
+      <select id="service_type" name="service_type" class="form-select" required>
+        <option value="Shuttle service">Shuttle Service</option>
+        <option value="Food Service">Food Service</option>
+      </select>
+      <div class="invalid-feedback">
+        Please select a valid room type.
+      </div>
+    </div>
+
+    <div class="col-lg-6 mx-auto">
+      <label for="description" class="form-label">Description:</label>
+      <input type="text" class="form-control" id="description" name="description" required>
+      <div class="invalid-feedback">
+        Please enter a description.
+      </div>
+    </div>
+
+    <div class="col-lg-6 mx-auto">
+      <label for="price" class="form-label">Price:</label>
+      <input type="number" class="form-control" id="price" name="price" required>
+      <div class="invalid-feedback">
+        Please enter a valid price.
+      </div>
+    </div>
+
+      <div class="col-lg-6 mx-auto">
+        <label for="service_image" class="form-label">Service Image:</label>
+        <input type="file" class="form-control" id="service_image" name="service_image" accept="image/*" required>
+        <div class="invalid-feedback">
+          Please select a valid room image.
+        </div>
+      </div>
+
+    <div class="mb-3 text-center mt-4">
+      <button class="btn btn-primary" type="submit">Add Service</button>
+    </div>
+  </form>
+</div>

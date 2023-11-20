@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Manager The Plaza</title>
+  <link rel="shortcut icon" href="/img/logo.png">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <script src="/font/fontawesome/js/all.min.js"></script>
+</head>
+
+<body>
+  <% const currentTab = "admin/rooms"; %>
+  <%- include('./partials/header.ejs', { currentTab: currentTab }) %>
+  <%- include('./partials/msg-err.ejs') %>
+
+
+  <input type="hidden" name="room_id" value="<%= room_id %>">
+  <div class="container">
+    <h1 class="text-center mt-5">Enter room information</h1>
+    <form class="needs-validation mt-5 mb-5" novalidate action="/admin/editroom/<%= room_id %>/" method="post" enctype="multipart/form-data">
+
+      <div class="col-lg-6 mx-auto">
+        <label for="room_number" class="form-label">Room Number:</label>
+        <input type="text" class="form-control" id="room_number" name="room_number" value="<%= room_number %>" required>
+        <div class="invalid-feedback">
+          Please enter a valid room number.
+        </div>
+      </div>
+
+      <div class="col-lg-6 mx-auto">
+        <label for="room_type" class="form-label">Room Type:</label>
+        <select id="room_type" name="room_type" class="form-select" required>
+          <option value="Standard" <%= room_type === 'Standard' ? 'selected' : '' %>>Standard</option>
+          <option value="Superior" <%= room_type === 'Superior' ? 'selected' : '' %>>Superior</option>
+          <option value="Deluxe" <%= room_type === 'Deluxe' ? 'selected' : '' %>>Deluxe</option>
+        </select>
+        <div class="invalid-feedback">
+          Please select a valid room type.
+        </div>
+      </div>
+
+      <div class="col-lg-6 mx-auto">
+        <label for="room_occupancy" class="form-label">Room Type:</label>
+        <select id="room_occupancy" name="room_occupancy" class="form-select" required>
+          <option value="Single Bedroom" <%= room_occupancy === 'Single Bedroom' ? 'selected' : '' %>>Single Bedroom</option>
+          <option value="Twin Bedroom" <%= room_occupancy === 'Twin Bedroom' ? 'selected' : '' %>>Twin Bedroom</option>
+          <option value="Double Bedroom" <%= room_occupancy === 'Double Bedroom' ? 'selected' : '' %>>Double Bedroom</option>
+          <option value="Triple Bedroom" <%= room_occupancy === 'Triple Bedroom' ? 'selected' : '' %>>Triple Bedroom</option>
+        </select>
+        <div class="invalid-feedback">
+          Please select a valid room type.
+        </div>
+      </div>
+
+
+      <div class="col-lg-6 mx-auto">
+        <label for="description" class="form-label">Description:</label>
+        <input type="text" class="form-control" id="description" name="description" value="<%= description %>" required>
+        <div class="invalid-feedback">
+          Please enter a description.
+        </div>
+      </div>
+
+      <div class="col-lg-6 mx-auto">
+        <label for="price" class="form-label">Price:</label>
+        <input type="text" class="form-control" id="price" name="price" value="<%= price %>" required>
+        <div class="invalid-feedback">
+          Please enter a valid price.
+        </div>
+      </div>
+
+      <div class="col-lg-6 mx-auto">
+        <label for="room_image" class="form-label">Room Image:</label>
+        <input enctype="multipart/form-data" type="file" class="form-control" id="room_image" name="room_image" accept=".jpg,.jpeg,.png">
+        <div class="form-text text-danger">
+          Please select a valid room image.
+        </div>
+
+        <script>
+          const roomImage = document.getElementById('room_image');
+          roomImage.addEventListener('change', function() {
+            if (!roomImage.value) {
+              roomImage.classList.add('is-invalid');
+              roomImage.nextElementSibling.innerText = 'Please select a valid room image.';
+            } else {
+              roomImage.classList.remove('is-invalid');
+              roomImage.nextElementSibling.innerText = '';
+            }
+          });
+        </script>
+      </div>
+
+      <div class="mb-3 text-center mt-4">
+        <button class="btn btn-primary" type="submit">Update Room</button>
+      </div>
+    </form>
+  </div>
+
+  <%- include('./partials/footer.ejs') -%>
+  <script src="/js/bootstrap.js"></script>
+</body>
+
+</html>

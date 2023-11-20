@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>The Plaza</title>
+  <link rel="shortcut icon" href="/img/logo.png">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <script src="/font/fontawesome/js/all.min.js"></script>
+</head>
+
+<!-- <body style="background-color: #fcebd61f;"> -->
+
+<body>
+  <% const currentTab="overview" %>
+  <%- include('./partials/header.ejs', { currentTab: currentTab }) %>
+  <%- include('./partials/msg-err.ejs') %>
+
+  <!-- CODE HERE -->
+  <div class="position-relative" style="background-image: url('/img/ov_head.jpg'); background-size: cover; background-position: center; height: 500px;">
+    <div class="overlay"></div>
+    <div class="position-absolute top-50 start-50 translate-middle text-center text-white">
+      <h1 class="fs-2">Experience New York's Iconic Luxury Hotel</h1>
+      <p class="small fs-6 text-justify">The Plaza Hotel has been an icon of New York City since its opening on October 1, 1907. The hotel has hosted world leaders, officials, top executives, and society, as well as Broadway stars and Hollywood royalty. With a prime location on 5th Avenue, The Plaza Hotel has maintained exceptional service and modern style for more than 100 years.</p>
+      <div class="container py-5 text-center">
+        <button type="button" class="btn btn-primary shadow-sm" data-bs-toggle="modal" data-bs-target="#infoHotel">
+          View Information
+        </button>
+      </div>
+    </div>
+  </div>
+  
+
+
+  <div class="modal fade" id="infoHotel" tabindex="-1" aria-labelledby="infoHotel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header bg-dark text-white">
+          <h5 class="modal-title" id="infoHotelLabel">Experience New York's Iconic Luxury Hotel</h5>
+          <button type="button" class="btn-close" style="color: aliceblue; background-color: white; border-color: white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <%- include('../admin/functions/infoHotel.ejs') %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container py-5">
+    <h1 class="text-center mb-4 text-danger">Welcome to The Plaza Hotel</h1>
+    <div class="row text-light">
+      <div class="col-md-4 my-3">
+        <div class="card bg-dark rounded-bottom">
+          <img src="/img/ov1.jpg" onerror="this.src='/img/error.jpg'" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Rooms &amp; Suites</h5>
+            <p class="card-text">Many types of rooms and suites for you to choose from.</p>
+            <a href="/rooms" class="btn btn-primary">View more</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 my-3">
+        <div class="card bg-dark rounded-bottom">
+          <img src="/img/ov2.jpg" onerror="this.src='/img/error.jpg'" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Foods</h5>
+            <p class="card-text">Please experience the food services that The Plaza brings.</p>
+            <a href="/foods" class="btn btn-primary">View more</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 my-3">
+        <div class="card bg-dark rounded-bottom">
+          <img src="/img/ov3.jpg" onerror="this.src='/img/error.jpg'" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Transshipment</h5>
+            <p class="card-text">Support customers to move in the most enthusiastic way.</p>
+            <a href="/shuttles" class="btn btn-primary">View more</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- slider -->
+  <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="/img/ov1_31.jpg" onerror="this.src='/img/error.jpg'" class="d-block w-100" alt="..." style="width: 100%">
+      </div>
+      <div class="carousel-item">
+        <img src="/img/ov2_31.jpg" onerror="this.src='/img/error.jpg'" class="d-block w-100" alt="..." style="width: 100%;">
+      </div>
+      <div class="carousel-item">
+        <img src="/img/ov3_31.jpg" onerror="this.src='/img/error.jpg'" class="d-block w-100" alt="..." style="width: 100%;">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleSlidesOnly" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleSlidesOnly" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+    <ol class="carousel-indicators">
+      <li data-bs-target="#carouselExampleSlidesOnly" data-bs-slide-to="0" class="active"></li>
+      <li data-bs-target="#carouselExampleSlidesOnly" data-bs-slide-to="1"></li>
+      <li data-bs-target="#carouselExampleSlidesOnly" data-bs-slide-to="2"></li>
+    </ol>
+  </div>
+  <!-- ......... -->
+  <%- include('./partials/footer.ejs') -%>
+  <script src="/js/bootstrap.js"></script>
+</body>
+
+</html>

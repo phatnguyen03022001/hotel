@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Manager The Plaza</title>
+  <link rel="shortcut icon" href="/img/logo.png">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <script src="/font/fontawesome/js/all.min.js"></script>
+</head>
+
+<body>
+  <% const currentTab="admin/customers" ; %>
+  <%- include('./partials/header.ejs', { currentTab: currentTab }) %>
+  <%- include('./partials/msg-err.ejs') %>
+
+  <!-- CODE HERE -->
+  <% if (users.length===0) { %>
+  <h1 class="text-center display-1 py-5">No Data</h1>
+  <% } else { %>
+  <div class="container-fluid py-5">
+    <h1 class="text-center mb-5">Customer Management</h1>
+    <div class="table-responsive bg-dark bg-opacity-10 rounded">
+      <table class="table table-striped">
+        <thead class="table-dark">
+          <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Fullname</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th class="d-flex justify-content-end">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for (var i=0; i < users.length; i++) { %>
+          <tr>
+            <td>
+              <%= users[i].user_id %>
+            </td>
+            <td>
+              <%= users[i].username %>
+            </td>
+            <td>
+              <%= users[i].fullname %>
+            </td>
+            <td>
+              <%= users[i].email %>
+            </td>
+            <td>
+              <%= users[i].phone %>
+            </td>
+            <td>
+              <%= users[i].address %>
+            </td>
+            <td>
+              <div class="d-flex justify-content-end">
+                <form method="get" action="/admin/editcustomer/<%= users[i].user_id %>/" class="me-2">
+                  <button type="submit" class="btn btn-primary">Edit</button>
+                </form>
+                <form method="post" action="/admin/deletecustomer/<%= users[i].user_id %>/">
+                  <input type="hidden" name="user_id" value="<%= users[i].user_id %>">
+                  <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+              </div>
+            </td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <% } %>
+
+  <!-------000-------->
+  <%- include('./partials/footer.ejs') -%>
+  <script src="/js/bootstrap.js"></script>
+</body>
+
+</html>

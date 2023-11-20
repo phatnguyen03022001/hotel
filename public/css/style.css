@@ -1,0 +1,40 @@
+.navbar-bran {
+    font-size: large;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    /* màu đen với độ mờ 50% */
+}
+
+
+a.nav-link {
+    color: #fff;
+    font-weight: 500;
+}
+
+button.nav-link.btn {
+    font-weight: 500;
+}
+
+button.nav-link.btn.text-light:hover:focus {
+    color: red;
+}
+
+a.nav-link:hover {
+    color: red;
+    border-radius: 4px;
+}
+
+a.nav-link.active {
+    color: #fff;
+    background-color: red;
+    border-radius: 4px;
+}
+
+/* Sign up */

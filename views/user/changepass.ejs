@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>The Plaza</title>
+  <link rel="shortcut icon" href="/img/logo.png">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <script src="/font/fontawesome/js/all.min.js"></script>
+</head>
+
+<body>
+  <% const currentTab="settings" %>
+  <%- include('./partials/header.ejs', { currentTab: currentTab }) %>
+  <%- include('./partials/msg-err.ejs') %>
+
+  <!-- CODE HERE -->
+
+  <div class="container">
+    <% if (msg) { %>
+      <div class="alert alert-success" role="alert">
+        <%= msg %>
+      </div>
+    <% } else if (err) { %>
+      <div class="alert alert-danger" role="alert">
+        <%= err %>
+      </div>
+    <% } %>
+    <h1 class="text-center mt-5">Change the password</h1>
+    <form class="needs-validation mt-5 mb-5" novalidate method="post" action="/changepass">
+  
+      <div class="form-group">
+        <label for="old_password">Current Password:</label>
+        <input type="password" class="form-control" id="old_password" name="old_password" required>
+      </div>
+      <div class="form-group">
+        <label for="new_password">New Password:</label>
+        <input type="password" class="form-control" id="new_password" name="new_password" required>
+      </div>
+      <div class="form-group">
+        <label for="confirm_password">Confirm New Password:</label>
+        <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
+      </div>
+  
+      <div class="mb-3 text-center mt-4">
+        <button type="submit" class="btn btn-primary">Save</button>
+      </div>
+    </form>
+  </div>
+  
+
+
+
+  <!-- ......... -->
+  <%- include('./partials/footer.ejs') -%>
+  <script src="/js/bootstrap.js"></script>
+</body>
+
+</html>

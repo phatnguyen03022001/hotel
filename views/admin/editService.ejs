@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Manager The Plaza</title>
+  <link rel="shortcut icon" href="/img/logo.png">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <script src="/font/fontawesome/js/all.min.js"></script>
+</head>
+
+<body>
+  <% const currentTab = "admin/services"; %>
+  <%- include('./partials/header.ejs', { currentTab: currentTab }) %>
+  <%- include('./partials/msg-err.ejs') %>
+
+
+  <input type="hidden" name="service_id" value="<%= service_id %>">
+  <div class="container">
+    <h1 class="text-center mt-5">Enter service information</h1>
+    <form class="needs-validation mt-5 mb-5" novalidate action="/admin/editservice/<%= service_id %>/" method="post" enctype="multipart/form-data">
+
+      <div class="col-lg-6 mx-auto">
+        <label for="service_name" class="form-label">Service name:</label>
+        <input type="text" class="form-control" id="service_name" name="service_name" value="<%= service_name %>" required>
+        <div class="invalid-feedback">
+          Please enter a valid service name.
+        </div>
+      </div>
+
+      <div class="col-lg-6 mx-auto">
+        <label for="service_type" class="form-label">Service Type:</label>
+        <select id="service_type" name="service_type" class="form-select" required>
+          <option value="Shuttle service" <%= service_type === 'Shuttle service' ? 'selected' : '' %>>Shuttle service</option>
+          <option value="Food Service" <%= service_type === 'Food Service' ? 'selected' : '' %>>Food Service</option>
+        </select>
+        <div class="invalid-feedback">
+          Please select a valid service type.
+        </div>
+      </div>
+
+      <div class="col-lg-6 mx-auto">
+        <label for="description" class="form-label">Description:</label>
+        <input type="text" class="form-control" id="description" name="description" value="<%= description %>" required>
+        <div class="invalid-feedback">
+          Please enter a description.
+        </div>
+      </div>
+
+      <div class="col-lg-6 mx-auto">
+        <label for="price" class="form-label">Price:</label>
+        <input type="text" class="form-control" id="price" name="price" value="<%= price %>" required>
+        <div class="invalid-feedback">
+          Please enter a valid price.
+        </div>
+      </div>
+
+      <div class="col-lg-6 mx-auto">
+        <label for="service_image" class="form-label">Service Image:</label>
+        <input enctype="multipart/form-data" type="file" class="form-control" id="service_image" name="service_image" accept=".jpg,.jpeg,.png">
+        <div class="form-text text-danger">
+          Please select a valid service image.
+        </div>
+
+        <script>
+          const serviceImage = document.getElementById('service_image');
+          serviceImage.addEventListener('change', function() {
+            if (!serviceImage.value) {
+              serviceImage.classList.add('is-invalid');
+              serviceImage.nextElementSibling.innerText = 'Please select a valid service image.';
+            } else {
+              serviceImage.classList.remove('is-invalid');
+              serviceImage.nextElementSibling.innerText = '';
+            }
+          });
+        </script>
+      </div>
+
+      <div class="mb-3 text-center mt-4">
+        <button class="btn btn-primary" type="submit">Update Room</button>
+      </div>
+    </form>
+  </div>
+  
+  <%- include('./partials/footer.ejs') -%>
+  <script src="/js/bootstrap.js"></script>
+</body>
+
+</html>
