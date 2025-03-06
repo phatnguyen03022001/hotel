@@ -4,7 +4,8 @@
   "description": "Datetime: https://codepen.io/vsfvjiuv-the-typescripter/pen/mdMeJwL?editors=1000",
   "main": "app.js",
   "scripts": {
-    "start": "npm run watch",
+    "start": "node app.js",
+    "dev": "nodemon -e js,ejs app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "nodemon -e js,ejs app.js"
   },
